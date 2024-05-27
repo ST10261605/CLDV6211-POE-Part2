@@ -1,0 +1,77 @@
+﻿@model MVCKhumaloCraftFinal2.ViewModels.CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+<br>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Order Details</h3>
+       
+        <form asp-action="CustomCheckout" asp-controller="Orders" method="post">
+      
+            @Html.AntiForgeryToken()
+    
+            <div class="form-group">
+                <label asp-for="OrderDate"></label>
+                <input asp-for="OrderDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="shippingMethod"></label>
+                <select asp-for="shippingMethod" class="form-control">
+                    <option>Plane</option>
+                    <option>Boat</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="shippingCurrency"></label>
+                <input asp-for="shippingCurrency" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="shippingAddress"></label>
+                <input asp-for="shippingAddress" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm Checkout</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Cart Items</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td>@item.Product.productName</td>
+                        <td>@item.Product.description</td>
+                        <td>R @item.Product.Price.ToString("0.00")</td>
+                        <td>@item.Product.Category</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

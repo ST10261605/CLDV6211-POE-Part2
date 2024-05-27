@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MVCKhumaloCraftFinal2.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Shopping Cart</h1>
+
+<div class="container">
+    <p>
+    </p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price (ZAR)</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product.productName</td>
+                    <td>@item.Product.description</td>
+                    <td>R @item.Product.Price.ToString("0.00")</td>
+                    <td>@item.Product.Category</td>
+                    <td>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CartItemID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: right;">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("CustomCheckout", "Orders")" class="btn btn-primary">Proceed to Checkout</a>
+                    }
+                    else
+                    {
+                        <p class="LoginFirstText">You have to log in first before proceeding<a href="@Url.Action("Login, Users")"></a></p>
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

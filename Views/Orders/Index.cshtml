@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MVCKhumaloCraftFinal2.Models.Order>
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<h1>Orders</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shippingMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shippingAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shippingCurrency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shippingAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shippingMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shippingAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shippingCurrency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shippingAddress)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.orderID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.orderID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.orderID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
